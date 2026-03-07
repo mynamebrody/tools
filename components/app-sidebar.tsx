@@ -212,7 +212,7 @@ export function AppSidebar() {
               <p className="text-xs text-muted-foreground/60 pt-2">
                 Plus{" "}
                 <a
-                  href="/ACKNOWLEDGEMENTS.md"
+                  href="https://github.com/mynamebrody/tools/blob/main/ACKNOWLEDGEMENTS.md"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline hover:text-muted-foreground transition-colors"
