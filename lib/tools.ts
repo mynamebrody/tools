@@ -83,6 +83,7 @@ export const toolCategories: ToolCategory[] = [
         description: "Format, validate, and minify JSON with indentation options",
         icon: Braces,
         href: "/tools/json-formatter",
+        beta: true,
       },
     ],
   },
