@@ -35,6 +35,19 @@ This file documents how to work safely and effectively in this repository.
 
 > Keep this list in sync with `lib/tools.ts`.
 
+### Developer Tools
+- `regex-tester` — Regex Tester
+- `encoder` — Encoding Tools
+- `json-formatter` — JSON Formatter
+
+### Calculators
+- `sci-calc` — Scientific Calculator
+- `graph-calc` — Graph Calculator
+- `algebra-calc` — Algebra Calculator
+- `base-converter` — Base Converter
+- `time-calc` — Time Calculator
+- `unit-converter` — Unit Converter
+
 ### Social Media
 - `social-cropper` — Social Media Cropper
 - `matte-generator` — Matte Generator
@@ -81,16 +94,6 @@ This file documents how to work safely and effectively in this repository.
 - `qr-genny` — QR Generator
 - `code-genny` — Barcode Generator
 - `meta-tag-genny` — Meta Tag Generator
-- `regex-tester` — Regex Tester
-
-### Calculators
-- `sci-calc` — Scientific Calculator
-- `graph-calc` — Graph Calculator
-- `algebra-calc` — Algebra Calculator
-- `base-converter` — Base Converter
-- `time-calc` — Time Calculator
-- `unit-converter` — Unit Converter
-- `encoder` — Encoding Tools
 
 ## Dependency map
 

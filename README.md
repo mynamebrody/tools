@@ -19,6 +19,19 @@ Most operations happen directly in the browser so users can work quickly and kee
 
 ## Tool categories
 
+### Developer Tools
+- Regex Tester
+- Encoding Tools
+- JSON Formatter
+
+### Calculators
+- Scientific Calculator
+- Graph Calculator
+- Algebra Calculator
+- Base Converter
+- Time Calculator
+- Unit Converter
+
 ### Social Media
 - Social Media Cropper
 - Matte Generator
@@ -65,16 +78,6 @@ Most operations happen directly in the browser so users can work quickly and kee
 - QR Generator
 - Barcode Generator
 - Meta Tag Generator
-- Regex Tester
-
-### Calculators
-- Scientific Calculator
-- Graph Calculator
-- Algebra Calculator
-- Base Converter
-- Time Calculator
-- Unit Converter
-- Encoding Tools
 
 ## Tech stack
 
