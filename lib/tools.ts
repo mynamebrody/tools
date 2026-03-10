@@ -40,6 +40,7 @@ import {
   Slice,
   FileSearch,
   Braces,
+  GitCompareArrows,
 } from "lucide-react";
 
 export interface Tool {
@@ -84,6 +85,14 @@ export const toolCategories: ToolCategory[] = [
         icon: Braces,
         href: "/tools/json-formatter",
         beta: true,
+      },
+      {
+        id: "text-diff",
+        name: "Text Diff / Compare",
+        description: "Compare two text blocks with inline and side-by-side views",
+        icon: GitCompareArrows,
+        href: "/tools/text-diff",
+        new: true,
       },
     ],
   },
