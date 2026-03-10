@@ -40,6 +40,7 @@ import {
   Slice,
   FileSearch,
   Braces,
+  Link2,
 } from "lucide-react";
 
 export interface Tool {
@@ -84,6 +85,14 @@ export const toolCategories: ToolCategory[] = [
         icon: Braces,
         href: "/tools/json-formatter",
         beta: true,
+      },
+      {
+        id: "url-parser",
+        name: "URL Parser",
+        description: "Parse URLs, edit query params, and compare two links",
+        icon: Link2,
+        href: "/tools/url-parser",
+        new: true,
       },
     ],
   },
