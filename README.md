@@ -24,6 +24,7 @@ Most operations happen directly in the browser so users can work quickly and kee
 - Encoding Tools
 - JSON Formatter
 - SQL Formatter *(new)*
+- Text Diff / Compare *(new)*
 
 ### Calculators
 - Scientific Calculator

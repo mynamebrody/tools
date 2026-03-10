@@ -52,6 +52,7 @@ const toolComponents: Record<string, React.ComponentType> = {
   "image-tracer": dynamic(() => import("@/components/tools/image-tracer").then(mod => mod.ImageTracerTool)),
   "guillotine-director": dynamic(() => import("@/components/tools/guillotine-director").then(mod => mod.GuillotineDirectorTool)),
   "pdf-preflight": dynamic(() => import("@/components/tools/pdf-preflight").then(mod => mod.PdfPreflightTool)),
+  "text-diff": dynamic(() => import("@/components/tools/text-diff").then(mod => mod.TextDiffTool)),
 };
 
 interface ToolPageProps {

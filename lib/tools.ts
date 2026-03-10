@@ -41,6 +41,7 @@ import {
   FileSearch,
   Braces,
   Database,
+  GitCompareArrows,
 } from "lucide-react";
 
 export interface Tool {
@@ -84,7 +85,7 @@ export const toolCategories: ToolCategory[] = [
         description: "Format, validate, and minify JSON with indentation options",
         icon: Braces,
         href: "/tools/json-formatter",
-        beta: true,
+        new: true,
       },
       {
         id: "sql-formatter",
@@ -92,6 +93,14 @@ export const toolCategories: ToolCategory[] = [
         description: "Simple, fast, paste-and-go SQL prettify/minify with keyword casing and dialect support",
         icon: Database,
         href: "/tools/sql-formatter",
+        new: true,
+      },
+      {
+        id: "text-diff",
+        name: "Text Diff / Compare",
+        description: "Compare two text blocks with inline and side-by-side views",
+        icon: GitCompareArrows,
+        href: "/tools/text-diff",
         new: true,
       },
     ],
