@@ -85,6 +85,14 @@ export const toolCategories: ToolCategory[] = [
         href: "/tools/json-formatter",
         beta: true,
       },
+      {
+        id: "config-converter",
+        name: "YAML / TOML / XML Formatter + Converter",
+        description: "Format, validate, minify, and convert between JSON, YAML, TOML, and XML",
+        icon: RefreshCw,
+        href: "/tools/config-converter",
+        new: true,
+      },
     ],
   },
   {
