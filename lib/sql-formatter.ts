@@ -62,15 +62,18 @@ function tokenizeSql(sql: string): Token[] {
       let j = i + 1;
       while (j < sql.length) {
         if (sql[j] === quote) {
-          if (quote === "'" && sql[j + 1] === quote) {
+          if (sql[j + 1] === quote) {
             j += 2;
             continue;
           }
+
           j += 1;
           break;
         }
+
         j += 1;
       }
+
       tokens.push({ value: sql.slice(i, j), type: "string" });
       i = j;
       continue;
@@ -196,6 +199,7 @@ function needsSpace(currentLine: string, next: string): boolean {
 export function minifySql(sql: string, { dialect, keywordCase }: { dialect: SqlDialect; keywordCase: SqlKeywordCase }): string {
   const tokens = tokenizeSql(sql);
   let output = "";
+  let forceNewlineBeforeNextToken = false;
 
   for (const token of tokens) {
     let value = token.value;
@@ -206,21 +210,25 @@ export function minifySql(sql: string, { dialect, keywordCase }: { dialect: SqlD
 
     if (!output) {
       output = value;
+      forceNewlineBeforeNextToken = token.type === "comment" && token.value.startsWith("--");
       continue;
     }
 
     if (token.value === "," || token.value === ")" || token.value === ";") {
       output += value;
+      forceNewlineBeforeNextToken = false;
       continue;
     }
 
     const prev = output[output.length - 1];
     if (prev === "(" || value === "(") {
       output += value;
+      forceNewlineBeforeNextToken = false;
       continue;
     }
 
-    output += ` ${value}`;
+    output += `${forceNewlineBeforeNextToken ? "\n" : " "}${value}`;
+    forceNewlineBeforeNextToken = token.type === "comment" && token.value.startsWith("--");
   }
 
   return output.replace(/;\s*/g, ";\n").trim();
