@@ -39,6 +39,7 @@ This file documents how to work safely and effectively in this repository.
 - `regex-tester` — Regex Tester
 - `encoder` — Encoding Tools
 - `json-formatter` — JSON Formatter
+- `sql-formatter` — SQL Formatter *(new)*
 
 ### Calculators
 - `sci-calc` — Scientific Calculator
