@@ -41,6 +41,7 @@ import {
   FileSearch,
   Braces,
   Database,
+  GitCompareArrows,
 } from "lucide-react";
 
 export interface Tool {
@@ -92,6 +93,22 @@ export const toolCategories: ToolCategory[] = [
         description: "Simple, fast, paste-and-go SQL prettify/minify with keyword casing and dialect support",
         icon: Database,
         href: "/tools/sql-formatter",
+        new: true,
+      },
+      {
+        id: "case-converter",
+        name: "Case Converter / Slugify",
+        description: "Convert text between common naming cases and slugify titles or filenames",
+        icon: Type,
+        href: "/tools/case-converter",
+        new: true,
+      },
+      {
+        id: "text-diff",
+        name: "Text Diff / Compare",
+        description: "Compare two text blocks with inline and side-by-side views",
+        icon: GitCompareArrows,
+        href: "/tools/text-diff",
         new: true,
       },
     ],
