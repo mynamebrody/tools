@@ -87,6 +87,14 @@ export const toolCategories: ToolCategory[] = [
         beta: true,
       },
       {
+        id: "case-converter",
+        name: "Case Converter / Slugify",
+        description: "Convert text between common naming cases and slugify titles or filenames",
+        icon: Type,
+        href: "/tools/case-converter",
+        new: true,
+      },
+      {
         id: "text-diff",
         name: "Text Diff / Compare",
         description: "Compare two text blocks with inline and side-by-side views",
