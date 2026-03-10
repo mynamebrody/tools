@@ -40,6 +40,7 @@ import {
   Slice,
   FileSearch,
   Braces,
+  KeyRound,
 } from "lucide-react";
 
 export interface Tool {
@@ -84,6 +85,13 @@ export const toolCategories: ToolCategory[] = [
         icon: Braces,
         href: "/tools/json-formatter",
         beta: true,
+      },
+      {
+        id: "jwt-decoder",
+        name: "JWT Decoder / Inspector",
+        description: "Decode JWT headers and payloads, inspect timing claims, and verify signatures locally",
+        icon: KeyRound,
+        href: "/tools/jwt-decoder",
       },
     ],
   },
