@@ -85,6 +85,13 @@ export const toolCategories: ToolCategory[] = [
         href: "/tools/json-formatter",
         beta: true,
       },
+      {
+        id: "case-converter",
+        name: "Case Converter / Slugify",
+        description: "Convert text between common naming cases and slugify titles or filenames",
+        icon: Type,
+        href: "/tools/case-converter",
+      },
     ],
   },
   {
