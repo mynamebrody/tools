@@ -23,6 +23,7 @@ Most operations happen directly in the browser so users can work quickly and kee
 - Regex Tester
 - Encoding Tools
 - JSON Formatter
+- Markdown Preview / Markdown ↔ HTML *(new)*
 
 ### Calculators
 - Scientific Calculator
