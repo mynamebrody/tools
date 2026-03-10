@@ -41,6 +41,7 @@ import {
   FileSearch,
   Braces,
   NotebookPen,
+  GitCompareArrows,
 } from "lucide-react";
 
 export interface Tool {
@@ -92,6 +93,14 @@ export const toolCategories: ToolCategory[] = [
         description: "Live GFM preview with sanitized HTML output and HTML-to-markdown conversion",
         icon: NotebookPen,
         href: "/tools/markdown-preview",
+        new: true,
+      },
+      {
+        id: "text-diff",
+        name: "Text Diff / Compare",
+        description: "Compare two text blocks with inline and side-by-side views",
+        icon: GitCompareArrows,
+        href: "/tools/text-diff",
         new: true,
       },
     ],

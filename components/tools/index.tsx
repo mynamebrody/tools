@@ -17,6 +17,7 @@ import { MarkdownPreviewTool } from "./markdown-preview";
 import { ImageTracerTool } from "./image-tracer";
 import { GuillotineDirectorTool } from "./guillotine-director";
 import { PdfPreflightTool } from "./pdf-preflight";
+import { TextDiffTool } from "./text-diff";
 
 export const toolComponents: Record<string, React.ComponentType> = {
   "px-to-rem": PxToRemTool,
@@ -36,4 +37,5 @@ export const toolComponents: Record<string, React.ComponentType> = {
   "image-tracer": ImageTracerTool,
   "guillotine-director": GuillotineDirectorTool,
   "pdf-preflight": PdfPreflightTool,
+  "text-diff": TextDiffTool,
 };
