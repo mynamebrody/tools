@@ -40,6 +40,7 @@ import {
   Slice,
   FileSearch,
   Braces,
+  NotebookPen,
   GitCompareArrows,
 } from "lucide-react";
 
@@ -85,6 +86,14 @@ export const toolCategories: ToolCategory[] = [
         icon: Braces,
         href: "/tools/json-formatter",
         beta: true,
+      },
+      {
+        id: "markdown-preview",
+        name: "Markdown Preview / Markdown ↔ HTML",
+        description: "Live GFM preview with sanitized HTML output and HTML-to-markdown conversion",
+        icon: NotebookPen,
+        href: "/tools/markdown-preview",
+        new: true,
       },
       {
         id: "case-converter",

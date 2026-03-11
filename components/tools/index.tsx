@@ -13,6 +13,7 @@ import { TimeCalcTool } from "./time-calc";
 import { UnitConverterTool } from "./unit-converter";
 import { EncoderTool } from "./encoder";
 import { JsonFormatterTool } from "./json-formatter";
+import { MarkdownPreviewTool } from "./markdown-preview";
 import { ImageTracerTool } from "./image-tracer";
 import { GuillotineDirectorTool } from "./guillotine-director";
 import { PdfPreflightTool } from "./pdf-preflight";
@@ -33,6 +34,7 @@ export const toolComponents: Record<string, React.ComponentType> = {
   "unit-converter": UnitConverterTool,
   "encoder": EncoderTool,
   "json-formatter": JsonFormatterTool,
+  "markdown-preview": MarkdownPreviewTool,
   "image-tracer": ImageTracerTool,
   "guillotine-director": GuillotineDirectorTool,
   "pdf-preflight": PdfPreflightTool,
