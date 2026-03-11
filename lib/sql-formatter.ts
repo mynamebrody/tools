@@ -62,6 +62,63 @@ function matchDollarQuoteDelimiter(sql: string, startIndex: number): string | nu
   return sql.slice(startIndex, cursor + 1);
 }
 
+function isPrefixedQuotePrefix(prefix: string): boolean {
+  const upper = prefix.toUpperCase();
+
+  if (upper === "E" || upper === "N" || upper === "X" || upper === "B" || upper === "U&") {
+    return true;
+  }
+
+  return prefix.startsWith("_");
+}
+
+function findQuotedTokenEnd(sql: string, quote: string, startQuoteIndex: number): number {
+  let cursor = startQuoteIndex + 1;
+
+  while (cursor < sql.length) {
+    if (sql[cursor] === quote) {
+      if (sql[cursor + 1] === quote) {
+        cursor += 2;
+        continue;
+      }
+
+      if ((quote === "'" || quote === '"') && isBackslashEscaped(sql, cursor)) {
+        cursor += 1;
+        continue;
+      }
+
+      return cursor + 1;
+    }
+
+    cursor += 1;
+  }
+
+  return sql.length;
+}
+
+function matchPrefixedQuotedLiteral(sql: string, startIndex: number): { end: number } | null {
+  const first = sql[startIndex];
+  if (!/[A-Za-z_]/.test(first)) {
+    return null;
+  }
+
+  let cursor = startIndex + 1;
+  while (cursor < sql.length && /[A-Za-z0-9_&]/.test(sql[cursor])) {
+    cursor += 1;
+  }
+
+  if (cursor >= sql.length || (sql[cursor] !== "'" && sql[cursor] !== '"' && sql[cursor] !== "`")) {
+    return null;
+  }
+
+  const prefix = sql.slice(startIndex, cursor);
+  if (!isPrefixedQuotePrefix(prefix)) {
+    return null;
+  }
+
+  return { end: findQuotedTokenEnd(sql, sql[cursor], cursor) };
+}
+
 function tokenizeSql(sql: string): Token[] {
   const tokens: Token[] = [];
   let i = 0;
@@ -101,30 +158,17 @@ function tokenizeSql(sql: string): Token[] {
       continue;
     }
 
+    const prefixedQuotedLiteral = matchPrefixedQuotedLiteral(sql, i);
+    if (prefixedQuotedLiteral) {
+      tokens.push({ value: sql.slice(i, prefixedQuotedLiteral.end), type: "string" });
+      i = prefixedQuotedLiteral.end;
+      continue;
+    }
+
     if (ch === "'" || ch === '"' || ch === "`") {
-      const quote = ch;
-      let j = i + 1;
-      while (j < sql.length) {
-        if (sql[j] === quote) {
-          if (sql[j + 1] === quote) {
-            j += 2;
-            continue;
-          }
-
-          if ((quote === "'" || quote === '"') && isBackslashEscaped(sql, j)) {
-            j += 1;
-            continue;
-          }
-
-          j += 1;
-          break;
-        }
-
-        j += 1;
-      }
-
-      tokens.push({ value: sql.slice(i, j), type: "string" });
-      i = j;
+      const tokenEnd = findQuotedTokenEnd(sql, ch, i);
+      tokens.push({ value: sql.slice(i, tokenEnd), type: "string" });
+      i = tokenEnd;
       continue;
     }
 
