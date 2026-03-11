@@ -155,6 +155,20 @@ function findBlockCommentEnd(sql: string, startIndex: number): number {
   return sql.length;
 }
 
+function isMysqlDashCommentStart(sql: string, startIndex: number): boolean {
+  if (sql[startIndex] !== "-" || sql[startIndex + 1] !== "-") {
+    return false;
+  }
+
+  const next = sql[startIndex + 2];
+  if (next === undefined) {
+    return true;
+  }
+
+  const code = next.charCodeAt(0);
+  return /\s/.test(next) || code <= 31 || code === 127;
+}
+
 function isLineCommentToken(token: Token): boolean {
   return token.type === "comment" && (token.value.startsWith("--") || token.value.startsWith("#"));
 }
@@ -171,7 +185,7 @@ function tokenizeSql(sql: string, dialect: SqlDialect): Token[] {
       continue;
     }
 
-    if (ch === "-" && sql[i + 1] === "-") {
+    if (ch === "-" && sql[i + 1] === "-" && (dialect !== "mysql" || isMysqlDashCommentStart(sql, i))) {
       const tokenEnd = findLineCommentEnd(sql, i + 2);
       tokens.push({ value: sql.slice(i, tokenEnd), type: "comment" });
       i = tokenEnd;
@@ -192,7 +206,7 @@ function tokenizeSql(sql: string, dialect: SqlDialect): Token[] {
       continue;
     }
 
-    const dollarDelimiter = matchDollarQuoteDelimiter(sql, i);
+    const dollarDelimiter = dialect === "postgresql" ? matchDollarQuoteDelimiter(sql, i) : null;
     if (dollarDelimiter) {
       const bodyStart = i + dollarDelimiter.length;
       const endIndex = sql.indexOf(dollarDelimiter, bodyStart);
@@ -224,7 +238,7 @@ function tokenizeSql(sql: string, dialect: SqlDialect): Token[] {
 
     let j = i;
     while (j < sql.length && !/\s/.test(sql[j]) && !/[(),;]/.test(sql[j])) {
-      if (sql[j] === "-" && sql[j + 1] === "-") break;
+      if (sql[j] === "-" && sql[j + 1] === "-" && (dialect !== "mysql" || isMysqlDashCommentStart(sql, j))) break;
       if (dialect === "mysql" && sql[j] === "#") break;
       if (sql[j] === "/" && sql[j + 1] === "*") break;
       j += 1;
